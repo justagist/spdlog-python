@@ -84,6 +84,11 @@ public:
     const static int off{ (int)spd::level::off };
 };
 
+void set_level(int log_level)
+{
+    spd::set_level((spd::level::level_enum)log_level);
+}
+
 class Sink {
 public:
     Sink() {}
@@ -994,6 +999,7 @@ py::class_<syslog_sink_mt, Sink>(m, "syslog_sink_mt")
 #endif
     m.def("get", get, py::arg("name"), py::return_value_policy::copy);
     m.def("drop", drop, py::arg("name"));
+    m.def("set_level", set_level, py::arg("level"));
     m.def("drop_all", drop_all);
 
 #ifdef VERSION_INFO

@@ -1,8 +1,6 @@
 import os
 import platform
-import sys
 
-import sysconfig
 from setuptools import setup
 from setuptools.extension import Extension
 from distutils.command.install_headers import install_headers
@@ -76,7 +74,7 @@ setup(
             ['src/pyspdlog.cpp'],
             include_dirs=get_include_dirs(),
             libraries=link_libs(),
-            extra_compile_args=["-std=c++11", "-v"],
+            extra_compile_args=["-std=c++11", "-v", "-DSPDLOG_ACTIVE_LEVEL=SPDLOG_LEVEL_DEBUG"],
             language='c++11'
         )
     ],
